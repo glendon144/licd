@@ -93,10 +93,16 @@ There is now a conservative remote deployment helper:
 Design notes:
 
 - installs `licd` under `/opt/licd`
-- creates a dedicated system user `licd`
 - creates `/opt/licd/.venv`
-- creates `/etc/default/licd`
-- installs a systemd service named `licd`
+- Linux targets:
+  - create a dedicated system user `licd`
+  - create `/etc/default/licd`
+  - install a systemd service named `licd`
+- macOS targets:
+  - keep the install under `/opt/licd`
+  - create `/opt/licd/licd.env`
+  - install a LaunchDaemon plist
+  - run `licd` as the SSH login user instead of inventing a new macOS service account
 - preserves `/opt/licd/storage/licd.db` across source refreshes
 - binds to `127.0.0.1:8777` by default
 - smoke-tests `/health` and `/diagnostics`
