@@ -82,6 +82,27 @@ dream-server: 8181
 echo_vault:   disabled unless LICD_ECHO_VAULT_PORT is set
 ```
 
+## Remote deployment helper
+
+There is now a conservative remote deployment helper:
+
+```bash
+./scripts/deploy-licd-remote.sh <target-host>
+```
+
+Design notes:
+
+- installs `licd` under `/opt/licd`
+- creates a dedicated system user `licd`
+- creates `/opt/licd/.venv`
+- creates `/etc/default/licd`
+- installs a systemd service named `licd`
+- preserves `/opt/licd/storage/licd.db` across source refreshes
+- binds to `127.0.0.1:8777` by default
+- smoke-tests `/health` and `/diagnostics`
+
+This is intentionally shell-first. It should be proven from the CLI before any future `licd-console` deployment button tries to wrap it.
+
 ## Architectural note
 
 For local-only services like `dream-server` and `clones-brain`, the intended model is:
