@@ -49,7 +49,7 @@ Environment/config knobs:
     LICD_SHARED_TOKEN=change-me
 
 Default service ports:
-    tortoised:    8770
+    tortoised:    8767
     clones-brain: 8765
     dream-server: 8181
     echo_vault:   disabled unless LICD_ECHO_VAULT_PORT is set
@@ -94,7 +94,7 @@ DEFAULT_HOSTS_FILE = os.environ.get("LICD_HOSTS_FILE", "/etc/hosts")
 DEFAULT_TIMEOUT = float(os.environ.get("LICD_TIMEOUT", "2.0"))
 APP_VERSION = "0.3.1"
 
-TORTOISED_PORT = int(os.environ.get("LICD_TORTOISED_PORT", "8770"))
+TORTOISED_PORT = int(os.environ.get("LICD_TORTOISED_PORT", "8767"))
 CLONES_BRAIN_PORT = int(os.environ.get("LICD_CLONES_BRAIN_PORT", "8765"))
 DREAM_SERVER_PORT = int(os.environ.get("LICD_DREAM_SERVER_PORT", "8181"))
 
